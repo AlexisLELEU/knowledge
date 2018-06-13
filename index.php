@@ -92,6 +92,7 @@ $driver = new DriverPrestashop();
                     </div>
                 </div>
                 <a href="./connect_file/logOut.php">Se deconnecter</a><br>   
+                <a href="./client_details.php">details</a><br>   
             </main>
             <script src='js/app.js'></script>
         </body> 
