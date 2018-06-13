@@ -70,9 +70,23 @@ if (!$_GET['id']){
                 <div class='details-container'>
 
 
-                    <div class='details-container__order'>
+                    <div class='details-container__block'>
                         <h3 class='details__title'>Commandes</h3>
 
+                        <div class='details-order__info'>
+                            <div class='order-info__date'>
+                                <p>10/06/2018</p>
+                            </div>
+                            <div class='order-info__ref'>
+                                <p>#12ERRFF432</p>
+                            </div>
+                            <div class='order-info__product'>
+                                <p>2 pattes de dérailleur, 1 paire de patins, 1 cadre Giant Escape 3</p>
+                            </div>
+                            <div class='order-info__state'>
+                                <p>Expédié</p>
+                            </div>
+                        </div>
                         <div class='details-order__info'>
                             <div class='order-info__date'>
                                 <p>10/06/2018</p>
@@ -91,6 +105,56 @@ if (!$_GET['id']){
                         <p class='details-order__archive'>Voir les commandes archivées</p>
                     </div>
 
+
+                     <div class='details-container__block'>
+                        <h3 class='details__title'>Tickets</h3>
+
+                        <div class='details-ticket__info'>
+                            <div class='ticket-info__description'>
+                                <div class='ticket-description__details'>
+                                    <div class='ticket-details__ref'>
+                                        <p>#ref0000</p>
+                                    </div>
+                                    <div class='ticket-details__date'>
+                                        <p>10:20 - 12/02/18</p>
+                                    </div>
+                                    <div class='ticket-details__user'>
+                                        <p>Gérard</p>
+                                    </div>
+                                </div>
+                                <div class='ticket-description__text'>
+                                    <p>Retour produit en attente - Problème de soudure</p>
+                                </div>
+                            </div>
+                            <div class='ticket-description__state'>
+                                <div class='ticket-state__color'></div>
+                                <div class='ticket-state__seeMore'>
+                                    <p>Voir le ticket</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class='details-ticket__info'>
+                            <div class='ticket-info__description'>
+                                <div class='ticket-description__details'>
+                                    <div class='ticket-details__ref'>
+                                        <p>#ref0000</p>
+                                    </div>
+                                    <div class='ticket-details__date'>
+                                        <p>10:20 - 12/02/18</p>
+                                    </div>
+                                    <div class='ticket-details__user'>
+                                        <p>Gérard</p>
+                                    </div>
+                                </div>
+                                <div class='ticket-description__text'>
+                                    <p>Retour produit en attente - Problème de soudure</p>
+                                </div>
+                            </div>
+                            <div class='ticket-description__state'>
+                                <div class='ticket-state__color'></div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
                 
