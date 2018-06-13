@@ -197,7 +197,6 @@ input:focus {
 
 .ticket-container__block{
     width: 45%;
-    height: 200px;
 }   
 
 .ticket-block__title{
@@ -215,6 +214,7 @@ input:focus {
     overflow: hidden;
 }
 .ticket-block__ticket{
+    position: relative;
     padding: 15px 20px;
     border-bottom: 	1px solid #E7EAF0;
 }
@@ -266,4 +266,21 @@ input:focus {
     color: #102E4A;	
     font-size: 10px;	
     font-weight: bold;
+}
+
+.ticket-block__status {
+    width: 15px;
+    height: 15px;
+    border-radius: 100%;
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: green;
+}
+.ticket-block__status--orange {
+    background-color: orange;
+}
+.ticket-block__status--grey {
+    background-color: grey;
 }

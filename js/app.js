@@ -12,9 +12,16 @@ class searchAutoComplete {
       DELETE: {
         method: "DELETE"
       },
-      DomDelete: []
+      renderingHTMLAutoComplete: (id_client, lastname, firstname) => {
+        this.dom.resultSearch.innerHTML += `<div class='search-result__client' name='${id_client}'>
+            <a href="../client_details.php?id=${id_client}">${lastname} ${firstname}</a>
+          </div>`;
+      }
     };
   }
+  /**
+   * @return method bind with this context
+   */
   _bindThis() {
     ["handleChange", "renderResultApi", "filterResultApi"].forEach(fn => {
       this[fn] = this[fn].bind(this);
@@ -29,31 +36,21 @@ class searchAutoComplete {
       return true;
     });
   }
-  renderResultApi(resultApi, DELETE, END_POINT, CLIENT) {
+  renderResultApi(resultApi) {
+    const { renderingHTMLAutoComplete } = this.state;
     resultApi.map(item => {
       if (item) {
-        this.dom.resultSearch.innerHTML += `<div class='search-result__client' name='${item.id_client}'><a href="../client_details.php?id=${item.id_client}">${item.lastname} ${item.firstname}</a>
-          </div>`;
+        renderingHTMLAutoComplete(
+          item.id_client,
+          item.firstname,
+          item.lastname
+        );
       }
     });
-
-    const deleteRow = document.querySelectorAll(".delete");
-    for (let i = 0; i < deleteRow.length; i++) {
-      deleteRow[i].addEventListener("click", () => {
-        let parent = deleteRow[i].parentNode;
-        let getID = parent.getAttribute("name");
-        fetch(`${END_POINT}${CLIENT}/${getID}`, {
-          method: "DELETE"
-        }).then(res => {
-          parent.remove();
-          res.json();
-        });
-      });
-    }
     return resultApi;
   }
   handleChange(pEvt) {
-    const { END_POINT, CLIENT, GET, DELETE } = this.state;
+    const { END_POINT, CLIENT, GET } = this.state;
     let value = pEvt.target.value;
     fetch(`${END_POINT}${CLIENT}`, GET)
       .then(res => {
@@ -69,7 +66,7 @@ class searchAutoComplete {
             string = string + value[i];
           }
           result = this.filterResultApi(data, string);
-          return this.renderResultApi(result, DELETE, END_POINT, CLIENT);
+          return this.renderResultApi(result);
         }
       });
   }
