@@ -1,12 +1,12 @@
 <?php
 
-session_start();
+// session_start();
 
-if (empty($_SESSION)){
-    header('Location: connect_file/connexion.php');
-}
+// if (empty($_SESSION)){
+//     header('Location: connect_file/connexion.php');
+// }
 
-if (isset($_SESSION['id'])) {
+// if (isset($_SESSION['id'])) {
     ?>
 
     <html>
@@ -104,4 +104,4 @@ if (isset($_SESSION['id'])) {
     </html>
 
 <?php
-}
+// }
