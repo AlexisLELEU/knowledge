@@ -6,7 +6,7 @@ if (is_null($_SESSION['id'])){
     header('Location: ../connect_file/connexion.php');
 }
 $driver = new DriverPrestashop();
-    ?>
+?>
 
     <html>
         <head>
@@ -56,24 +56,42 @@ $driver = new DriverPrestashop();
                                 </div>
                                 <p class='ticket-block__problem'><?= $ticket['titre'] ?></p>
                                 <p class='ticket-block__date'><?= $ticket["date"] ?></p>
+                                <div class="<?= $ticket["status"] === '0' ? "ticket-block__status" : ( $ticket["status"] === "10" ? "ticket-block__status ticket-block__status--orange" : ( $ticket["status"] === "20" ? "ticket-block__status ticket-block__status--grey" : '' ) ) ?>"></div>
                             </div>
                             <?php } ?>
                             <div class='ticket-block__seemore'>
-                                <p class='ticket-seemore__text'>Voir plus</p>
+                                <p class='ticket-seemore__text'>Voir plus</p>   
+                            </div> 
+                        </div>
+                    </div>
+                    <div class="ticket-container__block">
+                    <h3 class='ticket-block__title'>Ajoutés récemments</h3>
+                    <div class='ticket-block__content'>
+                            <?php 
+                                $req_sort = "SELECT `titre`, `owner`, `status`, `userId`, `reference`, `date` FROM tickets WHERE `userId` = :id ORDER BY `date` DESC";
+                                $sql = $pdo->prepare($req_sort);
+                                $sql->bindValue(':id', $_GET['id'] , PDO::PARAM_STR);
+                                $sql->execute();
+                                $tickets_sort = $sql->fetchAll();
+                            ?>
+                            <?php foreach ($tickets_sort as $ticket) { ?>
+                            <div class='ticket-block__ticket'>
+                                <div class='ticket-block__state'>
+                                    <p class='ticket-state__ref'><?= $ticket["reference"] ?></p>
+                                    <p class='ticket-state__name'><i class="fas fa-user-circle"></i><?= $ticket["owner"]; ?></p>
+                                </div>
+                                <p class='ticket-block__problem'><?= $ticket['titre'] ?></p>
+                                <p class='ticket-block__date'><?= $ticket["date"] ?></p>
+                            </div>
+                            <?php } ?>
+                            <div class='ticket-block__seemore'>
+                                <p class='ticket-seemore__text'>Voir plus</p>   
                             </div>
                             
                         </div>
-
-                    </div>
-
-                    <div class="ticket-container__block">
-
-                    <h3 class='ticket-block__title'>Ajoutés récemments</h3>
                     </div>
                 </div>
-
-            <a href="./connect_file/logOut.php">Se deconnecter</a><br>   
-                
+                <a href="./connect_file/logOut.php">Se deconnecter</a><br>   
             </main>
             <script src='js/app.js'></script>
         </body> 
