@@ -1,9 +1,6 @@
 <?php
 require_once 'connect_file/connect.php';
 session_start();
-
-
-
 if (!$_GET['id']){
     header('Location: client_space.php');
 } else {
@@ -28,7 +25,4 @@ if (!$_GET['id']){
     $sql->bindValue(':id', $id , PDO::PARAM_STR);
     $sql->execute();
     $clientInfo = $sql->fetch();
-    var_dump($clientInfo);
-    
-
 }
