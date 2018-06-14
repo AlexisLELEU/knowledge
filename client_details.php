@@ -66,36 +66,37 @@ if (!$_GET['id']){
                 </div>
 
                 <div class='details-container__userInfo'>
+                    <p class="changeAction">modifé</p>
                         <form class='details-userInfo__form' action="">
                             <div class='details-form__pers'>
                                 <div class='labelInput-content pers-content__phone'>
                                     <label class='client-form__label' for=""><i class="fas fa-building"></i>Téléphone</label>
-                                    <input type="text" class='client-form__input' value='tetete'>
+                                    <input type="text" class='client-form__input' value='tetete' disabled="disabled">
                                  </div>
                                  <div class='labelInput-content pers-content__email'>
                                     <label class='client-form__label' for=""><i class="fas fa-building"></i>Email</label>
-                                    <input type="text" class='client-form__input pers-input__email' value='tetete'>
+                                    <input type="text" class='client-form__input pers-input__email' value='tetete' disabled="disabled">
                                 </div>
                                 <div class='labelInput-content pers-content__city'>
                                     <label class='client-form__label' for=""><i class="fas fa-building"></i>Ville</label>
-                                    <input type="text" class='client-form__input pers-input__city' value='tetete'>
+                                    <input type="text" class='client-form__input pers-input__city' value='tetete' disabled="disabled">
                                 </div>
                             </div>
                             <div class='details-form__home'>
                                 <div class='labelInput-content  home-input__address'>
                                     <label class='client-form__label' for=""><i class="fas fa-building"></i>Adresse</label>
-                                    <input type="text" class='client-form__input' value='tetete'>
+                                    <input type="text" class='client-form__input' value='tetete' disabled="disabled">
                                 </div>
                                 <div class='labelInput-content  home-input__comp'>
                                     <label class='client-form__label' for=""><i class="fas fa-building"></i>Complément d’adresse</label>
-                                    <input type="text" class='client-form__input' value='tetete'>
+                                    <input type="text" class='client-form__input' value='tetete' disabled="disabled">
                                 </div>
                                 <div class='labelInput-content  home-input__postCode'>
                                     <label class='client-form__label' for=""><i class="fas fa-building"></i>Code postal</label>
-                                    <input type="text" class='client-form__input' value='tetete'>
+                                    <input type="text" class='client-form__input' value='tetete' disabled="disabled">
                                 </div>
                             </div>
-                            <button class='details-form__validate'>Validé</button>
+                            <div class='details-form__validate'>Validé</div>
                         </form>
                     </div>
 
@@ -232,5 +233,35 @@ if (!$_GET['id']){
                 </div>
             </main>
             <script src='js/app.js'></script>
+
+            <script>
+            
+                var actionChange = document.querySelector('.changeAction')
+                var input = document.querySelectorAll('.client-form__input')
+                var label = document.querySelectorAll('.client-form__label')
+                var validate = document.querySelector('.details-form__validate');
+
+                actionChange.addEventListener('click', function(e){
+                    validate.style.display = 'block';
+                    for (let i = 0; i < input.length; i++){
+                        input[i].disabled = false;
+                        input[i].classList.add('input-border');
+                        label[i].style.top = '-20px';
+                        label[i].style.left = '0';
+                    }
+                })
+
+                validate.addEventListener('click', function(e){
+                    validate.style.display = 'none';
+                    for (let i = 0; i < input.length; i++){
+                        input[i].disabled = true;
+                        input[i].classList.remove('input-border');
+                        label[i].style.top = '-8px';
+                        label[i].style.left = '10px';
+                    }
+                })
+            
+            
+            </script>
         </body> 
     </html>
