@@ -78,7 +78,7 @@ if (isset($_POST['form_connectAdmin'])){
             ?>
         </div>
     </main>
-    <script src='../js/app.js'></script>
+    <script src='../asset/js/app.js'></script>
 </body>
 </html>
 

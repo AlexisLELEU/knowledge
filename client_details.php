@@ -44,7 +44,7 @@ if (!$_GET['id']){
         </head>
         <body>
             <?php
-                require_once 'includes/header.php';
+                require_once 'asset/includes/header.php';
             ?>
             <main>
                 <div class='search-container'>
@@ -236,7 +236,7 @@ if (!$_GET['id']){
                     </div>
                 </div>
             </main>
-            <script src='js/app.js'></script>
+            <script src='asset/js/app.js'></script>
 
             <script>
             

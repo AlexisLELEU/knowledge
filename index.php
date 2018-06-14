@@ -21,7 +21,7 @@ $driver = new DriverPrestashop();
         </head>
         <body>
             <?php
-                require_once 'includes/header.php';
+                require_once 'asset/includes/header.php';
             ?>
             <main>
                 <div class='search-container'>
@@ -108,6 +108,6 @@ $driver = new DriverPrestashop();
                     </div>
                 </div>
             </main>
-            <script src='js/app.js'></script>
+            <script src='asset/js/app.js'></script>
         </body> 
     </html>

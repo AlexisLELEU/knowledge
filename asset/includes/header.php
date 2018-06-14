@@ -13,7 +13,7 @@
                     <div class='header__select'>
                         <div class='header-select__custom'>
                             <p>Sptam</p>
-                            <a href="./connect_file/logOut.php"><img src="./images/Shape.svg" alt=""></a>
+                            <a href="./connect_file/logOut.php"><img src="./asset/images/Shape.svg" alt=""></a>
                         </div>
                     </div>
                 </div>
