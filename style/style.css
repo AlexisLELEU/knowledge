@@ -389,23 +389,32 @@ input:focus {
     background-color: #CFD6E6;
 }
 
-.client form__label{
+.client-form__label{
     color: #2A3785;	
     font-size: 12px;
+    background: white;
+    position: absolute;
+    top: -8px;
+    left: 10px;
+    padding: 0 10px;
+}
+
+.fa-building{
+  margin-right: 7px;
 }
 
 .details-form__pers, .details-form__home{
     display: flex;
     justify-content: space-between;
     width: 100%;
-    
 }
 
 .details-form__home{
-    margin-top: 20px;
+    margin-top: 35px;
 }
 
 .labelInput-content{
+  position: relative;
     display: flex;
     flex-direction: column;
 }

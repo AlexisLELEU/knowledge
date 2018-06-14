@@ -61,39 +61,42 @@ if (!$_GET['id']){
                         <p class='details-option__client'><?= $clientInfo['firstname']; ?> <?= $clientInfo['lastname'] ?></p>
                     </div>
                 </div>
-                <div class='details-container'>
-                    <div class='details-container__userInfo'>
+
+                <div class='details-container__userInfo'>
                         <form class='details-userInfo__form' action="">
                             <div class='details-form__pers'>
                                 <div class='labelInput-content pers-content__phone'>
-                                    <label class='client-form__label' for="">Téléphone</label>
+                                    <label class='client-form__label' for=""><i class="fas fa-building"></i>Téléphone</label>
                                     <input type="text" class='client-form__input' value='tetete'>
                                  </div>
                                  <div class='labelInput-content pers-content__email'>
-                                    <label class='client-form__label' for="">Email</label>
+                                    <label class='client-form__label' for=""><i class="fas fa-building"></i>Email</label>
                                     <input type="text" class='client-form__input pers-input__email' value='tetete'>
                                 </div>
                                 <div class='labelInput-content pers-content__city'>
-                                    <label class='client-form__label' for="">Ville</label>
+                                    <label class='client-form__label' for=""><i class="fas fa-building"></i>Ville</label>
                                     <input type="text" class='client-form__input pers-input__city' value='tetete'>
                                 </div>
                             </div>
                             <div class='details-form__home'>
                                 <div class='labelInput-content  home-input__address'>
-                                    <label class='client-form__label' for="">Adresse</label>
+                                    <label class='client-form__label' for=""><i class="fas fa-building"></i>Adresse</label>
                                     <input type="text" class='client-form__input' value='tetete'>
                                 </div>
                                 <div class='labelInput-content  home-input__comp'>
-                                    <label class='client-form__label' for="">Complément d’adresse</label>
+                                    <label class='client-form__label' for=""><i class="fas fa-building"></i>Complément d’adresse</label>
                                     <input type="text" class='client-form__input' value='tetete'>
                                 </div>
                                 <div class='labelInput-content  home-input__postCode'>
-                                    <label class='client-form__label' for="">Code postal</label>
+                                    <label class='client-form__label' for=""><i class="fas fa-building"></i>Code postal</label>
                                     <input type="text" class='client-form__input' value='tetete'>
                                 </div>
                             </div>
+                            <button class='details-form__validate'>Validé</button>
                         </form>
                     </div>
+
+                <div class='details-container'>
                     <?php if (count($orders) > 0) { ?>
                     <div class='details-container__block'>
                         <h3 class='details__title'>Commandes</h3>
