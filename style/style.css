@@ -344,6 +344,7 @@ input:focus {
   color: #102e41;
   font-size: 16px;
   width: 100%;
+}
 
 .details-container__userInfo{
     width: 1080px;
@@ -589,7 +590,8 @@ input:focus {
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.5);
-/* //////////////////////////////////////////////////////////////////
+}
+/* //////////////////////////////////////////////////////////////////*/
 
 @media screen and (max-width: 1080px){
     .details-container{
