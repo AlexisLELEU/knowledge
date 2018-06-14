@@ -66,6 +66,9 @@ if (!$_GET['id']){
                     <div class='details-option__info'>
                         <p class='details-option__client'><?= $clientInfo['firstname']; ?> <?= $clientInfo['lastname'] ?></p>
                     </div>
+                    <button type="submit" class='ticket-state__seeMore js-element-btnCreateTicket'>
+                        <p>Créer un ticket</p>
+                    </button>
                 </div>
                 <div class='details-container'>
                     <div class='details-container__userInfo'>
@@ -170,9 +173,64 @@ if (!$_GET['id']){
                         <?php } ?>
                     </div>
                 </div>
-                <div class="modal-ticket js-element-modal">
+                <div class="modal-ticket js-element-modal-ticket">
                     <div class="modal-ticket-container">
-                        <button class="modal-ticket-close js-element-close">CLOSE</button>
+                        <button class="modal-ticket-close js-element-close-ticket">CLOSE</button>
+                    </div>
+                </div>
+                <div class="modal-create-ticket js-element-modal-createTicket">
+                    <div>
+                    <div class="modal-create-ticket-container">
+                        <button class="modal-create-ticket-close js-element-close-createTicket">X</button>
+                        <form method="post" class="modal-create-ticket-form form" action="createticket.php/?id=<?= $_GET['id'] ?>">
+                            <div class="form-wrapper">
+                                <label for="reference">References</label>
+                                <select class="form__input" name="reference" id="reference">
+                                    <?php foreach($orders as $order) { ?>
+                                        <option value="<?= $order["reference"] ?>"><?= $order["reference"] ?></option>
+                                    <?php } ?>
+                                </select>
+                            </div>
+                            <div class="form__wrapper">
+                            <label for="type">Type de ticket</label>
+                                <select class="form__input" name="type" id="type">
+                                    <option value="livraison">Delai de livraison</option>
+                                    <option value="abimé">Produit abimé</option>
+                                    <option value="incomplet">Commande incomplète</option>
+                                    <option value="pas commander">Produit pas commandé</option>
+                                    <option value="mauvais produit">Mauvais produit dans la livraison</option>
+                                    <option value="annulation">Annulation commande</option>
+                                </select>
+                            </div>
+                            <div class="form__wrapper">
+                                <label for="status">Status</label>
+                                <select class="form__input" name"status" id="status">
+                                    <option value="0">Clos</option>
+                                    <option value="10">En cours</option>
+                                    <option value="20">Urgence</option>
+                                </select>
+                            </div>
+                            <div class="form__wrapper">
+                                <label for="name">Nom du ticket</label>
+                                <input class="form__input" name="name" id="name" type="text" placeholder="Precisez le problème" />
+                            </div>
+                            <div class="form__wrapper">
+                                <label for="refs">Reference du ticket</label>
+                                <input class="form__input" name="refs" id="refs" type="text" placeholder="Reference du ticket (#refXXX)" />
+                            </div>
+                            <div class="form__wrapper">
+                                <label for="owner">Proprietaire du ticket</label>
+                                <input class="form__input" name="owner" id="owner" type="text" placeholder="Proprietaire du ticket" />
+                            </div>
+                            <div class="form__wrapper">
+                                <label for="desc">Description</label>
+                                <textarea name="desc" id="desc" placeholder="Décrivez la nature de votre problème"></textarea>
+                            </div>
+                            <div class="form__wrapper">
+                                <button class="form__input" type="submit">Envoyer</button>
+                            </div>
+                        </form>
+                    </div>
                     </div>
                 </div>
             </main>
