@@ -1,8 +1,8 @@
 <?php
+require_once './DriverPrestashop.php';
 require_once 'connect_file/connect.php';
 session_start();
-// var_dump($_SESSION);
-
+$driver = new DriverPrestashop();
 if (is_null($_SESSION['id'])) {
     header('Location: index.php');
 }
@@ -10,28 +10,27 @@ if (!$_GET['id']){
     header('Location: connect_file/logOut.php');
 } else {
     $id = $_GET['id'];
-
-
-    $req_client = "SELECT 
-                    `id_client`, 
-                    `firstname`, 
-                    `lastname`, 
-                    `email`, 
-                    `phone`, 
-                    `address`, 
-                    `age`, 
-                    `dateBirth` 
-                    FROM 
-                    client 
-                    WHERE
-                    `id_client` = :id";
+    $req_client = "SELECT `id_client`, `firstname`, `lastname`, `id_eCommerce` FROM client WHERE `id_client` = :id";
     
     $sql = $pdo->prepare($req_client);
-    $sql->bindValue(':id', $id , PDO::PARAM_STR);
+    $sql->bindValue(':id', $id);
     $sql->execute();
     $clientInfo = $sql->fetch();
 }
+    $driver->getCommande($clientInfo['id_eCommerce']);
+    
+    $req_order = "SELECT `id_order`, `product`, `user_Id`, `delivery`, `expedition`, `date`, `price`, `reference`, `status` FROM `userOder` WHERE `user_id` = :id";
+    $sql = $pdo->prepare($req_order);
+    $sql->bindValue(':id', $_GET['id']);
+    $sql->execute();
+    $orders = $sql->fetchAll();
 
+
+    $req_ticket = "SELECT `id_ticket`, `userId`, `titre`, `status`, `owner`, `date`, `date_limit`, `details`, `reference`, `client_id` FROM `tickets` WHERE `client_id` = :id";
+    $sql = $pdo->prepare($req_ticket);
+    $sql->bindValue(':id', $_GET['id']);
+    $sql->execute();
+    $tickets = $sql->fetchAll();
 ?>
 
  <html>
@@ -65,10 +64,11 @@ if (!$_GET['id']){
 
                 <div class='details-option'>
                     <div class='details-option__info'>
-                        <p class='details-option__client'>Zinedine Zidane</p>
+                        <p class='details-option__client'><?= $clientInfo['firstname']; ?> <?= $clientInfo['lastname'] ?></p>
                     </div>
                 </div>
-                <div class='details-container__userInfo'>
+                <div class='details-container'>
+                    <div class='details-container__userInfo'>
                         <form class='details-userInfo__form' action="">
                             <div class='details-form__pers'>
                                 <div class='labelInput-content pers-content__phone'>
@@ -98,98 +98,83 @@ if (!$_GET['id']){
                                     <input type="text" class='client-form__input' value='tetete'>
                                 </div>
                             </div>
-                            <button class='details-form__validate'>Validé</button>
-                        </form>       
-                </div>
-                <div class='details-container'>
+                        </form>
+                    </div>
+                    <?php if (count($orders) > 0) { ?>
                     <div class='details-container__block'>
                         <h3 class='details__title'>Commandes</h3>
-
+                        <?php foreach($orders as $order) {
+                            $date = strtotime($order['date']);
+                            $formatDate = date('d/m/Y', $date);
+                        ?>
                         <div class='details-order__info'>
                             <div class='order-info__date'>
-                                <p>10/06/2018</p>
+                                <p><?= $formatDate ?></p>
                             </div>
                             <div class='order-info__ref'>
-                                <p>#12ERRFF432</p>
+                                <p><?= $order["reference"] ?></p>
                             </div>
                             <div class='order-info__product'>
-                                <p>2 pattes de dérailleur, 1 paire de patins, 1 cadre Giant Escape 3</p>
+                                <p><?= $order["product"] ?></p>
                             </div>
                             <div class='order-info__state'>
-                                <p>Expédié</p>
+                                <p><?= $order["status"] ?></p>
                             </div>
                         </div>
-                        <div class='details-order__info'>
-                            <div class='order-info__date'>
-                                <p>10/06/2018</p>
-                            </div>
-                            <div class='order-info__ref'>
-                                <p>#12ERRFF432</p>
-                            </div>
-                            <div class='order-info__product'>
-                                <p>2 pattes de dérailleur, 1 paire de patins, 1 cadre Giant Escape 3</p>
-                            </div>
-                            <div class='order-info__state'>
-                                <p>Expédié</p>
-                            </div>
-                        </div>
+                        <?php } ?>
                         
                         <p class='details-order__archive'>Voir les commandes archivées</p>
                     </div>
-
+                    <?php } ?>
 
                      <div class='details-container__block'>
                         <h3 class='details__title'>Tickets</h3>
-
+                        <?php foreach($tickets as $ticket) { 
+                            $dateTicket = strtotime($ticket['date']);
+                            $formatDateTicket = date("d/m/Y", $dateTicket);
+                        ?>
                         <div class='details-ticket__info'>
                             <div class='ticket-info__description'>
                                 <div class='ticket-description__details'>
+                                    <?php if ($ticket["reference"]) { ?>
                                     <div class='ticket-details__ref'>
-                                        <p>#ref0000</p>
+                                        <p><?= $ticket['reference'] ?></p>
                                     </div>
+                                    <?php } ?>
+                                    <?php if ($formatDateTicket) { ?>
                                     <div class='ticket-details__date'>
-                                        <p>10:20 - 12/02/18</p>
+                                        <p><?= $formatDateTicket ?></p>
                                     </div>
+                                    <?php } ?>
+                                    <?php if ($ticket['owner']) { ?>
                                     <div class='ticket-details__user'>
-                                        <p>Gérard</p>
+                                        <p><?= $ticket['owner'] ?></p>
                                     </div>
+                                    <?php } ?>
                                 </div>
+                                <?php if ($ticket['details']) { ?>
                                 <div class='ticket-description__text'>
-                                    <p>Retour produit en attente - Problème de soudure</p>
+                                    <p><?= $ticket['details'] ?></p>
                                 </div>
+                                <?php } ?>
                             </div>
+                            <?php if ($ticket['status'] >= 0) { ?>
                             <div class='ticket-description__state'>
-                                <div class='ticket-state__color'></div>
-                                <div class='ticket-state__seeMore'>
+                                <div class="<?= $ticket["status"] === "0" ? "ticket-state__color" : ( $ticket["status"] === "10" ? "ticket-state__color ticket-state__color--orange" : ( $ticket["status"] === "20" ? "ticket-state__color ticket-state__color--grey" : '' ) ) ?>"></div>
+                                <button type="submit" class='ticket-state__seeMore js-element-btnModal'>
                                     <p>Voir le ticket</p>
-                                </div>
+                                </button>
                             </div>
+                            <?php } ?>
                         </div>
-                        <div class='details-ticket__info'>
-                            <div class='ticket-info__description'>
-                                <div class='ticket-description__details'>
-                                    <div class='ticket-details__ref'>
-                                        <p>#ref0000</p>
-                                    </div>
-                                    <div class='ticket-details__date'>
-                                        <p>10:20 - 12/02/18</p>
-                                    </div>
-                                    <div class='ticket-details__user'>
-                                        <p>Gérard</p>
-                                    </div>
-                                </div>
-                                <div class='ticket-description__text'>
-                                    <p>Retour produit en attente - Problème de soudure</p>
-                                </div>
-                            </div>
-                            <div class='ticket-description__state'>
-                                <div class='ticket-state__color'></div>
-                            </div>
-                        </div>
+                        <?php } ?>
                     </div>
                 </div>
-
-                
+                <div class="modal-ticket js-element-modal">
+                    <div class="modal-ticket-container">
+                        <button class="modal-ticket-close js-element-close">CLOSE</button>
+                    </div>
+                </div>
             </main>
             <script src='js/app.js'></script>
         </body> 
