@@ -14,6 +14,7 @@ $driver = new DriverPrestashop();
         <head>
             <title></title>
             <link rel="stylesheet" href="style/style.css">
+            <link href="https://fonts.googleapis.com/css?family=Lato:400,400i,700,700i" rel="stylesheet">
             <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
             <meta charset="UTF-8">
@@ -35,6 +36,7 @@ $driver = new DriverPrestashop();
 
                 <div class="ticket-container">
                     <div class="ticket-container__block">
+                        <div class="ticket-block__tag">Tickets</div>
                         <h3 class='ticket-block__title'>Urgences</h3>
                         <div class='ticket-block__content'>
                             <?php 
@@ -45,7 +47,7 @@ $driver = new DriverPrestashop();
                                 $tickets = $sql->fetchAll();
                             ?>
                         <?php foreach ($tickets as $ticket) { ?>
-                            <div class='ticket-block__ticket'>
+                            <a href="#"><div class='ticket-block__ticket'>
                                 <?php if ($ticket['reference'] || $ticket['owner']) { ?>
                                 <div class='ticket-block__state'>
                                     <?php if ($ticket['reference']) {  ?>
@@ -65,11 +67,13 @@ $driver = new DriverPrestashop();
                                 <?php if ($ticket['status'] >= 0) { ?>
                                 <div class="<?= $ticket["status"] === "0" ? "ticket-block__status" : ( $ticket["status"] === "10" ? "ticket-block__status ticket-block__status--orange" : ( $ticket["status"] === "20" ? "ticket-block__status ticket-block__status--grey" : '' ) ) ?>"></div>
                                 <?php } ?>
-                            </div>
+                            </div></a>
                         <?php } ?>
+                        <a href="#" class="ticket-block__link">Voir plus</a>
                         </div>
                     </div>
                     <div class="ticket-container__block">
+                    <div class="ticket-block__tag">Tickets</div>
                     <h3 class='ticket-block__title'>Ajoutés récemments</h3>
                     <div class='ticket-block__content'>
                             <?php 
@@ -80,7 +84,7 @@ $driver = new DriverPrestashop();
                                 $tickets_sort = $sql->fetchAll();
                             ?>
                             <?php foreach ($tickets_sort as $ticket) { ?>
-                            <div class='ticket-block__ticket'>
+                            <a href="#"><div class='ticket-block__ticket'>
                             <?php if ($ticket['reference'] || $ticket['owner']) { ?>
                                 <div class='ticket-block__state'>
                                     <?php if ($ticket['reference']) {  ?>
@@ -97,8 +101,9 @@ $driver = new DriverPrestashop();
                                 <?php if ($ticket['date']) { ?>
                                 <p class='ticket-block__date'><?= $ticket["date"] ?></p>
                                 <?php } ?>
-                            </div>
+                            </div></a>
                             <?php } ?>
+                            <a href="#" class="ticket-block__link">Voir plus</a>
                         </div>
                     </div>
                 </div>
