@@ -68,7 +68,38 @@ if (!$_GET['id']){
                     </div>
                 </div>
                 <div class='details-container'>
-
+                    <div class='details-container__userInfo'>
+                        <form class='details-userInfo__form' action="">
+                            <div class='details-form__pers'>
+                                <div class='labelInput-content pers-content__phone'>
+                                    <label class='client-form__label' for="">Téléphone</label>
+                                    <input type="text" class='client-form__input' value='tetete'>
+                                 </div>
+                                 <div class='labelInput-content pers-content__email'>
+                                    <label class='client-form__label' for="">Email</label>
+                                    <input type="text" class='client-form__input pers-input__email' value='tetete'>
+                                </div>
+                                <div class='labelInput-content pers-content__city'>
+                                    <label class='client-form__label' for="">Ville</label>
+                                    <input type="text" class='client-form__input pers-input__city' value='tetete'>
+                                </div>
+                            </div>
+                            <div class='details-form__home'>
+                                <div class='labelInput-content  home-input__address'>
+                                    <label class='client-form__label' for="">Adresse</label>
+                                    <input type="text" class='client-form__input' value='tetete'>
+                                </div>
+                                <div class='labelInput-content  home-input__comp'>
+                                    <label class='client-form__label' for="">Complément d’adresse</label>
+                                    <input type="text" class='client-form__input' value='tetete'>
+                                </div>
+                                <div class='labelInput-content  home-input__postCode'>
+                                    <label class='client-form__label' for="">Code postal</label>
+                                    <input type="text" class='client-form__input' value='tetete'>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
                     <?php if (count($orders) > 0) { ?>
                     <div class='details-container__block'>
                         <h3 class='details__title'>Commandes</h3>
