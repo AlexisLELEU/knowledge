@@ -19,15 +19,9 @@ $driver = new DriverPrestashop();
             <meta charset="UTF-8">
         </head>
         <body>
-            <header class="header">
-                <nav class="header__nav">
-                    <ul class="header-nav__ul">
-                        <li class="header-nav__li">Accueil</li>
-                        <li class="header-nav__li">Tickets</li>
-                        <li class="header-nav__li">Clients</li>
-                    </ul>
-                </nav>
-            </header>
+            <?php
+                require_once 'includes/header.php';
+            ?>
             <main>
                 <div class='search-container'>
                     <div class='search-container__search'>
@@ -108,7 +102,6 @@ $driver = new DriverPrestashop();
                         </div>
                     </div>
                 </div>
-                <a href="./connect_file/logOut.php">Se deconnecter</a><br>   
             </main>
             <script src='js/app.js'></script>
         </body> 
