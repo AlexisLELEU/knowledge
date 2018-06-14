@@ -2,11 +2,12 @@
 require_once 'connect_file/connect.php';
 session_start();
 // var_dump($_SESSION);
+
 if (is_null($_SESSION['id'])) {
     header('Location: index.php');
 }
 if (!$_GET['id']){
-    // header('Location: client_space.php');
+    header('Location: connect_file/logOut.php');
 } else {
     $id = $_GET['id'];
 
@@ -67,9 +68,7 @@ if (!$_GET['id']){
                         <p class='details-option__client'>Zinedine Zidane</p>
                     </div>
                 </div>
-                <div class='details-container'>
-
-                    <div class='details-container__userInfo'>
+                <div class='details-container__userInfo'>
                         <form class='details-userInfo__form' action="">
                             <div class='details-form__pers'>
                                 <div class='labelInput-content pers-content__phone'>
@@ -99,10 +98,10 @@ if (!$_GET['id']){
                                     <input type="text" class='client-form__input' value='tetete'>
                                 </div>
                             </div>
-                        </form>
-                    </div>
-
-
+                            <button class='details-form__validate'>Validé</button>
+                        </form>       
+                </div>
+                <div class='details-container'>
                     <div class='details-container__block'>
                         <h3 class='details__title'>Commandes</h3>
 

@@ -2,6 +2,8 @@
 require_once 'connect_file/connect.php';
 require_once 'DriverPrestashop.php';
 session_start();
+
+
 if (is_null($_SESSION['id'])){
     header('Location: ../connect_file/connexion.php');
 }
@@ -91,8 +93,7 @@ $driver = new DriverPrestashop();
                         </div>
                     </div>
                 </div>
-                <a href="./connect_file/logOut.php">Se deconnecter</a><br>   
-                <a href="./client_details.php">details</a><br>   
+                <a href="./connect_file/logOut.php">Se deconnecter</a><br>
             </main>
             <script src='js/app.js'></script>
         </body> 
