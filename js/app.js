@@ -1,6 +1,6 @@
 class searchAutoComplete {
   constructor() {
-    this._bindThis();
+    this.bindThis();
     this.getDom();
     this.eventListener();
     this.state = {
@@ -22,10 +22,55 @@ class searchAutoComplete {
   /**
    * @return method bind with this context
    */
-  _bindThis() {
-    ["handleChange", "renderResultApi", "filterResultApi"].forEach(fn => {
+  bindThis() {
+    [
+      "handleChange",
+      "renderResultApi",
+      "filterResultApi",
+      "toggleModalTicket",
+      "closeModalTicket",
+      "closeModalCreateTicket",
+      "toggleModalCreateTicket"
+    ].forEach(fn => {
       this[fn] = this[fn].bind(this);
     });
+  }
+  toggleModalTicket() {
+    this.dom.modalTicket.classList.toggle("modal-ticket--active");
+    if (this.dom.modalTicket.classList.contains("modal-ticket--active")) {
+      document.querySelector("body").style.overflow = "hidden";
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+      });
+    } else {
+      document.querySelector("body").style.overflow = "visible";
+    }
+  }
+  toggleModalCreateTicket() {
+    this.dom.modalCreateTicket.classList.toggle("modal-create-ticket--active");
+    if (
+      this.dom.modalCreateTicket.classList.contains(
+        "modal-create-ticket--active"
+      )
+    ) {
+      document.querySelector("body").style.overflow = "hidden";
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+      });
+    } else {
+      document.querySelector("body").style.overflow = "visible";
+    }
+  }
+  closeModalCreateTicket() {
+    console.log("okok");
+    this.dom.modalCreateTicket.classList.remove("modal-create-ticket--active");
+    document.querySelector("body").style.overflow = "visible";
+  }
+  closeModalTicket() {
+    this.dom.modalTicket.classList.remove("modal-ticket--active");
+    document.querySelector("body").style.overflow = "visible";
   }
   filterResultApi(resultApi, string) {
     return resultApi.filter(post => {
@@ -74,6 +119,24 @@ class searchAutoComplete {
     if (this.dom.search) {
       this.dom.search.addEventListener("input", this.handleChange);
     }
+    if (this.dom.modalTicket || this.dom.modalCreateTicket) {
+      for (let i = 0; i < this.dom.btnModal.length; i++) {
+        this.dom.btnModal[i].addEventListener("click", this.toggleModalTicket);
+      }
+      this.dom.closeModalTicket.addEventListener(
+        "click",
+        this.closeModalTicket
+      );
+
+      this.dom.btnCreateTicket.addEventListener(
+        "click",
+        this.toggleModalCreateTicket
+      );
+      this.dom.closeModalCreateTicket.addEventListener(
+        "click",
+        this.closeModalCreateTicket
+      );
+    }
   }
   getDom() {
     this.dom = {};
@@ -83,6 +146,20 @@ class searchAutoComplete {
     this.dom.age = document.querySelector(".age");
     this.dom.search = document.querySelector(".search");
     this.dom.resultSearch = document.querySelector(".result-search");
+    this.dom.modalTicket = document.querySelector(".js-element-modal-ticket");
+    this.dom.modalCreateTicket = document.querySelector(
+      ".js-element-modal-createTicket"
+    );
+    this.dom.btnModal = document.querySelectorAll(".js-element-btnModal");
+    this.dom.closeModalCreateTicket = document.querySelector(
+      ".js-element-close-createTicket"
+    );
+    this.dom.closeModalTicket = document.querySelector(
+      ".js-element-close-ticket"
+    );
+    this.dom.btnCreateTicket = document.querySelector(
+      ".js-element-btnCreateTicket"
+    );
   }
 }
 
