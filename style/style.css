@@ -309,11 +309,73 @@ input:focus {
     min-height: 300px;
     margin: 0 auto;
     background: #ffffff;
+    border-radius: 10px;
+    overflow: hidden;
 }
 
+.details-userInfo__form{
+    width: 100%;
+    padding: 30px 70px;;
+}
+
+.client form__label{
+    color: #2A3785;	
+    font-size: 12px;
+}
+
+.details-form__pers, .details-form__home{
+    display: flex;
+    justify-content: space-between;
+}
+
+.details-form__home{
+    margin-top: 20px;
+}
+
+.labelInput-content{
+    display: flex;
+    flex-direction: column;
+}
+
+.client-form__label{
+    color: #2A3785;	
+    font-size: 12px;
+    margin-bottom: 2px; 
+}
+
+.client-form__input{
+    border: 1px solid #DBDBDB;
+    padding: 15px;
+    color: #102E41;
+    font-size: 16px;
+    width: 100%;
+}
 
 .details-container__block{
     padding: 30px 70px;
+}
+
+.pers-content__phone{
+    width: 25%;
+}
+
+.pers-content__email{
+    width: 50%;
+}
+.pers-content__city{
+    width: 20%;
+}
+
+.home-input__address{
+    width: 50%;
+}
+
+.home-input__comp{
+    width: 30%;
+}
+
+.home-input__postCode{
+    width: 15%;
 }
 
 .details__title{
