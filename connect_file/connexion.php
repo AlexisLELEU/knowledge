@@ -72,7 +72,7 @@ if (isset($_POST['form_connectAdmin'])){
             <?php
             if (isset($erreur)){
                 ?>
-                <p class=""><?= $erreur ?></p>
+                <p class="logOn-form__error"><?= $erreur ?></p>
                 <?php
             }
             ?>
