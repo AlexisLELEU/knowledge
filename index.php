@@ -2,6 +2,8 @@
 require_once 'connect_file/connect.php';
 require_once 'DriverPrestashop.php';
 session_start();
+
+
 if (is_null($_SESSION['id'])){
     header('Location: ../connect_file/connexion.php');
 }
