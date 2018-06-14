@@ -48,20 +48,29 @@ $driver = new DriverPrestashop();
                                 $sql->execute();
                                 $tickets = $sql->fetchAll();
                             ?>
-                            <?php foreach ($tickets as $ticket) { ?>
+                        <?php foreach ($tickets as $ticket) { ?>
                             <div class='ticket-block__ticket'>
+                                <?php if ($ticket['reference'] || $ticket['owner']) { ?>
                                 <div class='ticket-block__state'>
+                                    <?php if ($ticket['reference']) {  ?>
                                     <p class='ticket-state__ref'><?= $ticket["reference"] ?></p>
+                                    <?php } ?>
+                                    <?php if ($ticket['owner']) { ?>
                                     <p class='ticket-state__name'><i class="fas fa-user-circle"></i><?= $ticket["owner"]; ?></p>
+                                    <?php } ?>
                                 </div>
+                                <?php } ?>
+                                <?php if ($ticket['titre']) { ?>
                                 <p class='ticket-block__problem'><?= $ticket['titre'] ?></p>
+                                <?php } ?>
+                                <?php if ($ticket['date']) { ?>
                                 <p class='ticket-block__date'><?= $ticket["date"] ?></p>
-                                <div class="<?= $ticket["status"] === '0' ? "ticket-block__status" : ( $ticket["status"] === "10" ? "ticket-block__status ticket-block__status--orange" : ( $ticket["status"] === "20" ? "ticket-block__status ticket-block__status--grey" : '' ) ) ?>"></div>
+                                <?php } ?>
+                                <?php if ($ticket['status'] >= 0) { ?>
+                                <div class="<?= $ticket["status"] === "0" ? "ticket-block__status" : ( $ticket["status"] === "10" ? "ticket-block__status ticket-block__status--orange" : ( $ticket["status"] === "20" ? "ticket-block__status ticket-block__status--grey" : '' ) ) ?>"></div>
+                                <?php } ?>
                             </div>
-                            <?php } ?>
-                            <div class='ticket-block__seemore'>
-                                <p class='ticket-seemore__text'>Voir plus</p>   
-                            </div> 
+                        <?php } ?>
                         </div>
                     </div>
                     <div class="ticket-container__block">
@@ -76,27 +85,29 @@ $driver = new DriverPrestashop();
                             ?>
                             <?php foreach ($tickets_sort as $ticket) { ?>
                             <div class='ticket-block__ticket'>
+                            <?php if ($ticket['reference'] || $ticket['owner']) { ?>
                                 <div class='ticket-block__state'>
+                                    <?php if ($ticket['reference']) {  ?>
                                     <p class='ticket-state__ref'><?= $ticket["reference"] ?></p>
+                                    <?php } ?>
+                                    <?php if ($ticket['owner']) { ?>
                                     <p class='ticket-state__name'><i class="fas fa-user-circle"></i><?= $ticket["owner"]; ?></p>
+                                    <?php } ?>
                                 </div>
+                                <?php } ?>
+                                <?php if ($ticket['titre']) { ?>
                                 <p class='ticket-block__problem'><?= $ticket['titre'] ?></p>
+                                <?php } ?>
+                                <?php if ($ticket['date']) { ?>
                                 <p class='ticket-block__date'><?= $ticket["date"] ?></p>
+                                <?php } ?>
                             </div>
                             <?php } ?>
-                            <div class='ticket-block__seemore'>
-                                <p class='ticket-seemore__text'>Voir plus</p>   
-                            </div>
-                            
                         </div>
                     </div>
                 </div>
                 <a href="./connect_file/logOut.php">Se deconnecter</a><br>   
-                <a href="./client_details.php">details</a><br>   
             </main>
             <script src='js/app.js'></script>
         </body> 
     </html>
-
-<?php
-// }
