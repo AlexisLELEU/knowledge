@@ -50,7 +50,10 @@ if (!$_GET['id']){
                 <div class='search-container'>
                     <div class='search-container__search'>
                         <h3 class="search-container__title">Rechercher un client</h3>
-                        <input class="search search-container__action" type="text" placeholder="Chercher un client par son nom, prénom ou téléphone"/>
+                        <div class="search-container__content">
+                            <input class="search search-container__action" type="text" placeholder="Chercher un client par son nom, prénom ou téléphone"/>
+                            <a href="" class="search-container__btn"><i class="fas fa-search"></i></a>
+                        </div>
                         <div class="result-search-container">
                             <div class="result-search"></div>
                         </div>     
@@ -96,7 +99,7 @@ if (!$_GET['id']){
                                     <input type="text" class='client-form__input' value='tetete'>
                                 </div>
                             </div>
-                            <button class='details-form__validate'>Validé</button>
+                            <button class='details-form__validate'>Valider</button>
                         </form>
                     </div>
 
@@ -162,9 +165,6 @@ if (!$_GET['id']){
                             <?php if ($ticket['status'] >= 0) { ?>
                             <div class='ticket-description__state'>
                                 <div class="<?= $ticket["status"] === "0" ? "ticket-state__color" : ( $ticket["status"] === "10" ? "ticket-state__color ticket-state__color--orange" : ( $ticket["status"] === "20" ? "ticket-state__color ticket-state__color--grey" : '' ) ) ?>"></div>
-                                <button type="submit" class='ticket-state__seeMore js-element-btnModal'>
-                                    <p>Voir le ticket</p>
-                                </button>
                             </div>
                             <?php } ?>
                         </div></a>

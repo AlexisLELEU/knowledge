@@ -26,7 +26,10 @@ if (is_null($_SESSION['id'])){
                 <div class='search-container'>
                         <div class='search-container__search'>
                             <h3 class="search-container__title">Rechercher un client</h3>
-                            <input class="search search-container__action" type="text" placeholder="Chercher un client par son nom, prénom ou téléphone"/>
+                            <div class="search-container__content">
+                                <input class="search search-container__action" type="text" placeholder="Chercher un client par son nom, prénom ou téléphone"/>
+                                <a href="" class="search-container__btn"><i class="fas fa-search"></i></a>
+                            </div>                            
                             <div class="result-search-container">
                                 <div class="result-search"></div>
                             </div>     
@@ -74,6 +77,7 @@ if (is_null($_SESSION['id'])){
 
 
                                 <?php foreach ($tickets as $ticket) { ?>
+                                    <a href="#" class="details-ticket__link">
                                     <div class='details-ticket__info'>
                                         <div class='ticket-info__description'>
                                             <?php if ($ticket['reference'] || $ticket['owner'] || $ticket['date']) { ?>
@@ -111,7 +115,7 @@ if (is_null($_SESSION['id'])){
 
 
                                     </div>
-
+                                </a>
                                 <?php } ?>
                         </div>
                     </div>
