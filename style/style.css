@@ -344,14 +344,44 @@ input:focus {
   color: #102e41;
   font-size: 16px;
   width: 100%;
+
+.details-container__userInfo{
+    width: 1080px;
+    margin: 0 auto;
+    background: #ffffff;
+    margin-bottom: 30px;
+    border-radius: 10px; 
+    overflow: hidden; 
+}
+
+
+.details-userInfo__form{
+    display: flex;
+    width: 100%;
+    padding: 30px 70px;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.details-form__validate{
+    padding: 10px 25px;
+    color: #ffffff;
+    font-size: 14px;
+    border-radius: 4px;	
+    border: none;
+    margin-top: 30px;
+    text-align: right;
+    background-color: #CFD6E6;
 }
 
 .details-container__block {
   padding: 30px 70px;
 }
 
-.pers-content__phone {
-  width: 25%;
+.details-form__pers, .details-form__home{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
 }
 
 .pers-content__email {
@@ -372,7 +402,13 @@ input:focus {
 .home-input__postCode {
   width: 15%;
 }
-
+.client-form__input{
+    border: 1px solid #DBDBDB;
+    padding: 15px;
+    color: #102E41;
+    font-size: 16px;
+    width: 100%;
+}
 .details__title {
   color: #2e4057;
   font-size: 30px;
@@ -400,6 +436,38 @@ input:focus {
   transition: 0.4s;
 }
 
+.pers-content__phone{
+    width: 25%;
+}
+
+.pers-content__email{
+    width: 50%;
+}
+.pers-content__city{
+    width: 20%;
+}
+
+.home-input__address{
+    width: 50%;
+}
+
+.home-input__comp{
+    width: 30%;
+}
+
+.home-input__postCode{
+    width: 15%;
+}
+
+.details__title{
+    color: #2E4057;
+    font-size: 30px;
+    font-weight: 400;
+    width: 100%;
+    border-bottom: 1px solid #F0F2F7;
+    padding-bottom: 10px; 
+    margin-bottom: 30px;
+}
 .order-info__date {
   width: 15%;
   padding: 20px;
@@ -521,6 +589,15 @@ input:focus {
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.5);
+/* //////////////////////////////////////////////////////////////////
+
+@media screen and (max-width: 1080px){
+    .details-container{
+        width: 920px;
+    }
+    .details-option__client{
+        width: 920px;
+    }
 }
 
 .modal-ticket--active,
@@ -567,4 +644,13 @@ input:focus {
   align-items: center;
   justify-content: center;
   height: 100%;
+}
+
+@media screen and (max-width: 1080px){
+    .details-container{
+        width: 100%;
+    }
+    .details-option__client{
+        width: 100%;
+    }
 }

@@ -7,7 +7,7 @@ if (is_null($_SESSION['id'])) {
     header('Location: index.php');
 }
 if (!$_GET['id']){
-    // header('Location: client_space.php');
+    header('Location: connect_file/logOut.php');
 } else {
     $id = $_GET['id'];
     $req_client = "SELECT `id_client`, `firstname`, `lastname`, `id_eCommerce` FROM client WHERE `id_client` = :id";
