@@ -4,9 +4,9 @@
                         <img class='header-content_logo' src="./images/knowledge.svg" alt="">
                         <nav class="header__nav">
                             <ul class="header-nav__ul">
-                                <li class="header-nav__li">Accueil</li>
-                                <li class="header-nav__li">Tickets</li>
-                                <li class="header-nav__li">Clients</li>
+                                <a href='../index.php?id=<?= $_SESSION['id'] ?>'><li class="header-nav__li">Accueil</li></a>
+                                <a href='../tickets_list.php?id=<?= $_SESSION['id'] ?>'><li class="header-nav__li">Tickets</li></a>
+                                <a href='../clients_list.php?id=<?= $_SESSION['id'] ?>'><li class="header-nav__li">Clients</li></a>
                             </ul>
                         </nav>
                         </div>

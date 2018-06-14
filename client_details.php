@@ -185,11 +185,11 @@ if (!$_GET['id']){
                             <button class="modal-create-ticket-close js-element-close-createTicket"></button>
                         </div>
                         <form method="post" class="modal-create-ticket-form form" action="createticket.php/?id=<?= $_GET['id'] ?>">
-                            <div class="form-wrapper">
+                            <div class="form__wrapper">
                                 <label for="reference">References</label>
                                 <select class="form__input" name="reference" id="reference">
                                     <?php foreach($orders as $order) { ?>
-                                        <option value="<?= $order["reference"] ?>"><?= $order["reference"] ?></option>
+                                        <option value="<?= $order["reference"] ?>"><?= $order["reference"] ?> - <?= $order["product"] ?></option>    
                                     <?php } ?>
                                 </select>
                             </div>
@@ -228,8 +228,8 @@ if (!$_GET['id']){
                                 <label for="desc">Description</label>
                                 <textarea name="desc" id="desc" placeholder="Décrivez la nature de votre problème"></textarea>
                             </div>
-                            <div class="form__wrapper">
-                                <button class="form__input" type="submit">Envoyer</button>
+                            <div class="form__wrapper--right">
+                                <button class="ticket-state__seeMore" type="submit">Envoyer</button>
                             </div>
                         </form>
                     </div>
