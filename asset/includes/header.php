@@ -1,7 +1,7 @@
 <header class="header">
                 <div class='header-content'>
                     <div class='header-content__menu'>
-                        <img class='header-content_logo' src="./images/knowledge.svg" alt="">
+                        <img class='header-content_logo' src="./asset/images/knowledge.svg" alt="">
                         <nav class="header__nav">
                             <ul class="header-nav__ul">
                                 <a href='../index.php?id=<?= $_SESSION['id'] ?>'><li class="header-nav__li">Accueil</li></a>
