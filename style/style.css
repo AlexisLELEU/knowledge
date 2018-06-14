@@ -317,9 +317,34 @@ input:focus {
     overflow: hidden;
 }
 
+
+.details-container__userInfo{
+    width: 1080px;
+    margin: 0 auto;
+    background: #ffffff;
+    margin-bottom: 30px;
+    border-radius: 10px; 
+    overflow: hidden; 
+}
+
+
 .details-userInfo__form{
+    display: flex;
     width: 100%;
-    padding: 30px 70px;;
+    padding: 30px 70px;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.details-form__validate{
+    padding: 10px 25px;
+    color: #ffffff;
+    font-size: 14px;
+    border-radius: 4px;	
+    border: none;
+    margin-top: 30px;
+    text-align: right;
+    background-color: #CFD6E6;
 }
 
 .client form__label{
@@ -330,6 +355,8 @@ input:focus {
 .details-form__pers, .details-form__home{
     display: flex;
     justify-content: space-between;
+    width: 100%;
+    
 }
 
 .details-form__home{
@@ -352,7 +379,8 @@ input:focus {
     padding: 15px;
     color: #102E41;
     font-size: 16px;
-    width: 100%;
+    width: 100%;}
+
 .details__title {
   color: #2e4057;
   font-size: 30px;
@@ -412,6 +440,8 @@ input:focus {
     border-bottom: 1px solid #F0F2F7;
     padding-bottom: 10px; 
     margin-bottom: 30px;
+}
+
 .order-info__date {
   width: 15%;
   padding: 20px;
@@ -535,19 +565,14 @@ input:focus {
 
 /* //////////////////////////////////////////////////////////////////
 
-                          Modal Ticket
-
-///////////////////////////////////////////////////////////////////*/
-.modal-ticket {
-  position: absolute;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-  display: flex;
-  flex-flow: row wrap;
-  background: rgba(0, 0, 0, 0.7);
-  display: none;
+@media screen and (max-width: 1080px){
+    .details-container{
+        width: 920px;
+    }
+    .details-option__client{
+        width: 920px;
+    }
+    
 }
 .modal-ticket--active {
   display: block;
@@ -558,4 +583,13 @@ input:focus {
   min-height: 700px;
   background-color: #fff;
   border-radius: 10px;
+}
+
+@media screen and (max-width: 1080px){
+    .details-container{
+        width: 100%;
+    }
+    .details-option__client{
+        width: 100%;
+    }
 }
