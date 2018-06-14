@@ -37,6 +37,7 @@ if (!$_GET['id']){
         <head>
             <title></title>
             <link rel="stylesheet" href="style/style.css">
+            <link href="https://fonts.googleapis.com/css?family=Lato:400,400i,700,700i" rel="stylesheet">
             <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
             <meta charset="UTF-8">
@@ -133,7 +134,7 @@ if (!$_GET['id']){
                             $dateTicket = strtotime($ticket['date']);
                             $formatDateTicket = date("d/m/Y", $dateTicket);
                         ?>
-                        <div class='details-ticket__info'>
+                        <a href="#"><div class='details-ticket__info'>
                             <div class='ticket-info__description'>
                                 <div class='ticket-description__details'>
                                     <?php if ($ticket["reference"]) { ?>
@@ -148,7 +149,7 @@ if (!$_GET['id']){
                                     <?php } ?>
                                     <?php if ($ticket['owner']) { ?>
                                     <div class='ticket-details__user'>
-                                        <p><?= $ticket['owner'] ?></p>
+                                        <p><i class="fas fa-user-circle"></i>  <?= $ticket['owner'] ?></p>
                                     </div>
                                     <?php } ?>
                                 </div>
@@ -166,7 +167,7 @@ if (!$_GET['id']){
                                 </button>
                             </div>
                             <?php } ?>
-                        </div>
+                        </div></a>
                         <?php } ?>
                     </div>
                 </div>
@@ -178,7 +179,10 @@ if (!$_GET['id']){
                 <div class="modal-create-ticket js-element-modal-createTicket">
                     <div>
                     <div class="modal-create-ticket-container">
-                        <button class="modal-create-ticket-close js-element-close-createTicket">X</button>
+                        <div class="modal-create-ticket__titleContainer">
+                            <h3 class="modal-create-ticket__title">Création de ticket </h3>
+                            <button class="modal-create-ticket-close js-element-close-createTicket"></button>
+                        </div>
                         <form method="post" class="modal-create-ticket-form form" action="createticket.php/?id=<?= $_GET['id'] ?>">
                             <div class="form-wrapper">
                                 <label for="reference">References</label>
