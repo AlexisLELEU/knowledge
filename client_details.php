@@ -70,34 +70,35 @@ if (!$_GET['id']){
                 </div>
 
                 <div class='details-container__userInfo'>
-                    <p class="changeAction">modifé</p>
+                    <p class="changeAction">Editer les informations</p>
+                    
                         <form class='details-userInfo__form' action="">
                             <div class='details-form__pers'>
                                 <div class='labelInput-content pers-content__phone'>
                                     <label class='client-form__label' for=""><i class="fas fa-building"></i>Téléphone</label>
-                                    <input type="text" class='client-form__input' value='tetete' disabled="disabled">
+                                    <input type="text" class='client-form__input' value='0612735941' disabled="disabled">
                                  </div>
                                  <div class='labelInput-content pers-content__email'>
                                     <label class='client-form__label' for=""><i class="fas fa-building"></i>Email</label>
-                                    <input type="text" class='client-form__input pers-input__email' value='tetete' disabled="disabled">
+                                    <input type="text" class='client-form__input pers-input__email' value='monemail@gamil.com' disabled="disabled">
                                 </div>
                                 <div class='labelInput-content pers-content__city'>
                                     <label class='client-form__label' for=""><i class="fas fa-building"></i>Ville</label>
-                                    <input type="text" class='client-form__input pers-input__city' value='tetete' disabled="disabled">
+                                    <input type="text" class='client-form__input pers-input__city' value='Paris' disabled="disabled">
                                 </div>
                             </div>
                             <div class='details-form__home'>
                                 <div class='labelInput-content  home-input__address'>
                                     <label class='client-form__label' for=""><i class="fas fa-building"></i>Adresse</label>
-                                    <input type="text" class='client-form__input' value='tetete' disabled="disabled">
+                                    <input type="text" class='client-form__input' value='12 avenue de la Victoire' disabled="disabled">
                                 </div>
                                 <div class='labelInput-content  home-input__comp'>
                                     <label class='client-form__label' for=""><i class="fas fa-building"></i>Complément d’adresse</label>
-                                    <input type="text" class='client-form__input' value='tetete' disabled="disabled">
+                                    <input type="text" class='client-form__input' value='Bat C' disabled="disabled">
                                 </div>
                                 <div class='labelInput-content  home-input__postCode'>
                                     <label class='client-form__label' for=""><i class="fas fa-building"></i>Code postal</label>
-                                    <input type="text" class='client-form__input' value='tetete' disabled="disabled">
+                                    <input type="text" class='client-form__input' value='75350' disabled="disabled">
                                 </div>
                             </div>
                             <div class='details-form__validate'>Valider</div>

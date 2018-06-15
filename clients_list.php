@@ -79,6 +79,6 @@ if (is_null($_SESSION['id'])){
                 
 
             </main>
-            <script src='asset/app.js'></script>
+            <script src='asset/js/app.js'></script>
         </body> 
     </html>
